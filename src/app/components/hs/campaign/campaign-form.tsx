@@ -14,10 +14,10 @@ import {
 } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { getAllBrand } from "../../apis/brand";
-import { CAMPAIGN_TYPE } from "../../enums/campaign";
-import { createCampaignSchema } from "../../validators/campaign";
-import { GameController } from "./game-controller";
+import { getAllBrand } from "../../../apis/brand";
+import { CAMPAIGN_TYPE } from "../../../enums/campaign";
+import { createCampaignSchema } from "../../../validators/campaign";
+import { GameController } from "../game-controller";
 
 import type {
   CreateCampaign,
@@ -25,9 +25,9 @@ import type {
   GetCampaign,
   NameId,
   Tournament,
-} from "../../types";
+} from "../../../types";
 
-type CampaignDetailsProps = {
+type CampaignFormProps = {
   campaign: CreateCampaign | GetCampaign;
   onSubmit: (campaign: CreateCampaign | GetCampaign) => void;
 };
@@ -42,8 +42,8 @@ const filterOptions = createFilterOptions<NameId<number>>({
   limit: 100,
 });
 
-const CampaignDetails = forwardRef(function CampaignDetails(
-  { campaign, onSubmit }: PropsWithChildren<CampaignDetailsProps>,
+const CampaignForm = forwardRef(function CampaignDetails(
+  { campaign, onSubmit }: PropsWithChildren<CampaignFormProps>,
   ref
 ) {
   const [game, setGame] = useState<Game | null>(
@@ -181,4 +181,4 @@ const CampaignDetails = forwardRef(function CampaignDetails(
   );
 });
 
-export { CampaignDetails };
+export { CampaignForm };

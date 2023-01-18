@@ -16,5 +16,8 @@ export default ({ mode }: UserConfig) => {
         },
       },
     },
+    experimental: {
+      hmrPartialAccept: true,
+    },
   });
 };

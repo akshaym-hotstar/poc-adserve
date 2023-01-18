@@ -1,22 +1,14 @@
-import { QueryFunctionContext } from "@tanstack/react-query";
-
+import { GetCampaignTransform } from "../transformers/campaigns/get-campaign";
 import { axiosInstance } from "../utils/axios";
+import { withQuery } from "../utils/react-query";
 
 import type {
   BaseAPIParams,
   BlazeAPIResponse,
   CampaignList,
   GetCampaign,
+  CreateCampaign,
 } from "../types";
-import { GetCampaignTransform } from "../transformers/campaigns/get-campaign";
-
-const withQuery =
-  (fn: Function) =>
-  ({ queryKey }: QueryFunctionContext) => {
-    const [_, payload] = queryKey;
-    return fn(payload);
-  };
-
 type GetAllCampaignParams = Partial<{
   tournamentId: number;
   seasonId: number;
@@ -68,6 +60,17 @@ const getCampaignById = async ({
   }
 };
 
+const createCampaign = async (payload: CreateCampaign) => {
+  try {
+    const { data } = await axiosInstance.post<BlazeAPIResponse<GetCampaign>>(
+      "/api/campaign/"
+    );
+    return data.data;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
 const getAllCampaignsQuery = withQuery(getAllCampaigns);
 const getCampaignByIdQuery = withQuery(getCampaignById);
 
@@ -76,4 +79,5 @@ export {
   getAllCampaignsQuery,
   getCampaignById,
   getCampaignByIdQuery,
+  createCampaign,
 };

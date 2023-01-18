@@ -55,7 +55,7 @@ function App() {
   };
 
   return (
-    <Box sx={{ display: "flex", flex: 1 }}>
+    <Box className="flex h-full">
       <CssBaseline enableColorScheme />
       <AppBar
         position="fixed"
@@ -96,16 +96,10 @@ function App() {
       </Drawer>
       <Box
         component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          background: "#efefef",
-          display: "flex",
-          flexFlow: "column",
-        }}
+        className="flex flex-col h-full p-6 bg-[#efefef] w-[calc(100%-65px)]"
       >
         <DrawerHeader />
-        <Box display="flex" flexDirection="column" flex={1}>
+        <Box className="flex flex-col h-full w-full">
           <Outlet />
         </Box>
       </Box>

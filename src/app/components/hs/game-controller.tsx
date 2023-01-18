@@ -99,7 +99,7 @@ const GameController = ({
       </TextField>
       <Autocomplete
         sx={{ width: 300 }}
-        value={tournament}
+        value={tournament ?? null}
         options={tournaments}
         filterOptions={filterOptions}
         getOptionLabel={(item) => item.name}
@@ -119,7 +119,7 @@ const GameController = ({
       />
       <Autocomplete
         sx={{ width: 300 }}
-        value={season}
+        value={season ?? null}
         options={seasons}
         filterOptions={filterOptions}
         getOptionLabel={(item) => item.name}
@@ -133,7 +133,7 @@ const GameController = ({
         onChange={(_, newValue) => {
           onSeasonChange(newValue);
         }}
-        isOptionEqualToValue={(option, value) => option.id === value.id}  
+        isOptionEqualToValue={(option, value) => option.id === value.id}
         {...props.seasonFieldProps}
       />
     </Box>

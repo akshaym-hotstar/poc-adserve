@@ -13,14 +13,4 @@ export type BaseAPIParams<T> = T & {
   transform?: boolean;
 };
 
-export type { Brand, Game, Tournament, Season } from "./basic-data";
-
-export type {
-  CampaignList,
-  CreateCampaign,
-  CreateCampaignDTO,
-  GetCampaign,
-  GetCampaignDTO,
-} from "./campaign";
-
-export type { TransformModel } from "./transform";
+export type AnyFunction = (...args: any) => any;
